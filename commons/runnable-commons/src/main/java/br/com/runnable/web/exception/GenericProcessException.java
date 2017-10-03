@@ -2,6 +2,7 @@ package br.com.runnable.web.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
@@ -12,6 +13,7 @@ import java.util.Map;
  * Created by giovane.silva on 26/09/2017.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class GenericProcessException extends RuntimeException {
