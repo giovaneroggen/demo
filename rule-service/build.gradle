@@ -1,0 +1,9 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile project(':entity-commons')
+    compile project(':runnable-commons')
+    compile boot.data.rest, boot.data.mongo
+
+    testCompile project(':tests-commons')
+}

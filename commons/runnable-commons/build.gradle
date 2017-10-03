@@ -1,0 +1,6 @@
+dependencies {
+    compile(boot.web){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    compile(boot.undertow)
+}

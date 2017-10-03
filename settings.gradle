@@ -1,0 +1,22 @@
+rootProject.name = 'demo'
+
+include 'product-service'
+include 'store-service'
+include 'organization-service'
+include 'product-collection-service'
+include 'customer-service'
+include 'basket-service'
+include 'delivery-service'
+include 'rule-service'
+include 'checkout-service'
+include 'recurrency-service'
+include ':feign-commons'
+project(':feign-commons').projectDir = new File('/commons/feign-commons')
+include ':runnable-commons'
+project(':runnable-commons').projectDir = new File('/commons/runnable-commons')
+include ':entity-commons'
+project(':entity-commons').projectDir = new File('/commons/entity-commons')
+include ':tests-commons'
+project(':tests-commons').projectDir = new File('/commons/tests-commons')
+
+

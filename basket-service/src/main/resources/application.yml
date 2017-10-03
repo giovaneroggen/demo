@@ -1,0 +1,35 @@
+spring:
+    rabbitmq:
+        addresses: 172.33.0.33:8088
+    jmx:
+        enabled: false
+    executor:
+        maxPoolSize: 120
+        queueCapacity: 150
+    redis:
+        host: 172.33.0.33
+        port: 8087
+        timeout: 15000
+        database: 0
+    cloud:
+        stream:
+            bindings:
+                process-basket-output:
+                    destination: process-basket-queue
+                    content-type: application/json
+                process-basket-input:
+                    destination: process-basket-queue
+                    group: notificationGroup
+                    consumer:
+                        concurrency: 10
+                        maxAttempts: 2
+                        backOffInitialInterval: 1
+                        backOffMaxInterval: 1
+                        requeueRejected: true
+            rabbit:
+                bindings:
+                    process-basket-input:
+                        consumer:
+                            autoBindDlq: true
+server:
+    port: 8080

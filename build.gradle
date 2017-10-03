@@ -1,0 +1,85 @@
+buildscript {
+	ext {
+		springBootVersion = "1.4.0.RELEASE"
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+	id "io.spring.dependency-management" version "0.4.0.RELEASE"
+}
+
+allprojects {
+	ext{
+		boot = [
+				bootPlugin : "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
+				web 	   : "org.springframework.boot:spring-boot-starter-web",
+				undertow   : "org.springframework.boot:spring-boot-starter-undertow",
+ 				starter	   : "org.springframework.boot:spring-boot-starter",
+				data: [
+						mongo        :  "org.springframework.boot:spring-boot-starter-data-mongodb",
+						elasticSeach :  "org.springframework.data:spring-data-elasticsearch-custom:3.1.0.BUILD-SNAPSHOT",
+						jpa			 :  "org.springframework.boot:spring-boot-starter-data-jpa",
+						rest		 :  "org.springframework.boot:spring-boot-starter-data-rest",
+				],
+				cloud: [
+						starter : "org.springframework.cloud:spring-cloud-starter",
+						amqp	: "org.springframework.cloud:spring-cloud-starter-bus-amqp",
+						stream	: "org.springframework.cloud:spring-cloud-stream",
+						rabbit	: "org.springframework.cloud:spring-cloud-starter-stream-rabbit",
+						feign   : [
+							// configuration
+							"org.springframework.cloud:spring-cloud-netflix-core",
+							// core
+							"com.netflix.feign:feign-core",
+							// slf4j
+							"com.netflix.feign:feign-slf4j",
+							// commons to configure pageable bug
+							"org.springframework.boot:spring-boot-starter-data-rest"
+						]
+				],
+		]
+		jackson = [
+				dataType    : "com.fasterxml.jackson.datatype:jackson-datatype-jsr310",
+				paramsNames : "com.fasterxml.jackson.module:jackson-module-parameter-names"
+		]
+		lombok = "org.projectlombok:lombok:1.16.18"
+		tests = [
+		    boot: [
+		          starter: "org.springframework.boot:spring-boot-starter-test"
+		    ],
+			h2: "com.h2database:h2"
+		]
+		jna = "net.java.dev.jna:jna"
+	}
+
+	version = '1.0'
+	group = 'br.com'
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	apply plugin: "io.spring.dependency-management"
+	sourceCompatibility = 1.8
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	dependencies {
+		compile(lombok)
+		compile(boot.starter)
+		compile(jackson.dataType)
+		compile(jackson.paramsNames)
+	}
+
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.data:spring-data-releasetrain:Hopper-SR5"
+			mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.SR5"
+		}
+	}
+}

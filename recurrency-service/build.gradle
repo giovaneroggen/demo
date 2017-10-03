@@ -1,0 +1,15 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile project(':entity-commons')
+    compile project(':runnable-commons')
+    compile boot.data.rest, boot.data.mongo
+
+    // feign
+    compile project(':feign-commons')
+    compile boot.cloud.feign
+    // rabbit
+    compile boot.cloud.starter, boot.cloud.amqp
+
+    testCompile project(':tests-commons')
+}
