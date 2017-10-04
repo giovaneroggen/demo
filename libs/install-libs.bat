@@ -1,2 +1,2 @@
 
-call mvn install:install-file -Dfile=spring-data-elasticsearch-custom-3.1.0.BUILD-SNAPSHOT.jar -DpomFile=spring-data-elasticsearch-custom-3.1.0.BUILD-SNAPSHOT.pom 
+call mvn install:install-file -Dfile=spring-data-elasticsearch-dynamic-2.0.2.RELEASE.jar -DpomFile=spring-data-elasticsearch-dynamic-2.0.2.RELEASE.pom 

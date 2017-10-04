@@ -3,13 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework.data</groupId>
-    <artifactId>spring-data-elasticsearch-custom</artifactId>
-    <version>3.1.0.BUILD-SNAPSHOT</version>
+    <artifactId>spring-data-elasticsearch-dynamic</artifactId>
+    <version>2.0.2.RELEASE</version>
 
     <parent>
         <groupId>org.springframework.data.build</groupId>
         <artifactId>spring-data-parent</artifactId>
-        <version>2.1.0.BUILD-SNAPSHOT</version>
+        <version>1.8.2.RELEASE</version>
+        <relativePath>../spring-data-build/parent/pom.xml</relativePath>
     </parent>
 
     <name>Spring Data Elasticsearch</name>
@@ -17,11 +18,14 @@
     <url>https://github.com/spring-projects/spring-data-elasticsearch</url>
 
     <properties>
+
+        <dist.key>DATAES</dist.key>
+
         <commonscollections>3.2.1</commonscollections>
         <commonslang>2.6</commonslang>
-        <elasticsearch>5.5.0</elasticsearch>
-        <springdata.commons>2.1.0.BUILD-SNAPSHOT</springdata.commons>
-        <java-module-name>spring.data.elasticsearch</java-module-name>
+        <elasticsearch>2.2.0</elasticsearch>
+        <springdata.commons>1.12.2.RELEASE</springdata.commons>
+
     </properties>
 
     <dependencies>
@@ -71,30 +75,6 @@
             <version>${elasticsearch}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>transport</artifactId>
-            <version>${elasticsearch}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>1.7.22</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.8.2</version>
-        </dependency>
-
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -120,19 +100,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <version>${spring}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.apache.openwebbeans.test</groupId>
             <artifactId>cditest-owb</artifactId>
-            <version>1.2.8</version>
+            <version>${webbeans}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -145,15 +119,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
-        <!-- Upgrade xbean to 4.5 to prevent incompatibilities due to ASM versions -->
-        <dependency>
-            <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-asm5-shaded</artifactId>
-            <version>4.5</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -162,21 +127,11 @@
         </dependency>
 
         <dependency>
-      <!-- required by elasticsearch -->
-            <groupId>org.elasticsearch.plugin</groupId>
-            <artifactId>transport-netty4-client</artifactId>
-            <version>${elasticsearch}</version>
-            <!--<scope>test</scope>-->
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok}</version>
+            <version>1.16.4</version>
             <scope>test</scope>
         </dependency>
-
-
 
     </dependencies>
 
@@ -222,8 +177,8 @@
 
     <repositories>
         <repository>
-            <id>spring-libs-snapshot</id>
-            <url>https://repo.spring.io/libs-snapshot</url>
+            <id>spring-libs-release</id>
+            <url>https://repo.spring.io/libs-release</url>
         </repository>
     </repositories>
 
@@ -243,12 +198,12 @@
 
     <ciManagement>
         <system>Bamboo</system>
-        <url>https://build.spring.io/browse/SPRINGDATAES</url>
+        <url>http://build.springsource.org/browse/SPRINGDATAES</url>
     </ciManagement>
 
     <issueManagement>
         <system>JIRA</system>
-        <url>https://jira.spring.io/browse/DATAES</url>
+        <url>https://jira.springsource.org/browse/DATAES</url>
     </issueManagement>
 
 </project>
