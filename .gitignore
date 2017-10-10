@@ -1,0 +1,34 @@
+
+
+.gradle/
+.idea/
+
+# build folders
+
+build/
+basket-service/build/
+checkout-service/build/
+commons/entity-commons/build/
+commons/feign-commons/build/
+commons/runnable-commons/build/
+commons/tests-commons/build/
+customer-service/build/
+delivery-service/build/
+organization-service/build/
+product-collection-service/build/
+product-service/build/
+
+#target folders
+/target/
+basket-service/target/
+checkout-service/target/
+commons/entity-commons/target/
+commons/feign-commons/target/
+commons/runnable-commons/target/
+commons/tests-commons/target/
+customer-service/target/
+delivery-service/target/
+organization-service/target/
+product-collection-service/target/
+product-service/target/
+
