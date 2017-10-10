@@ -1,6 +1,11 @@
 package br.com.product.interceptor;
 
-import org.apache.logging.log4j.util.Strings;
+import br.com.product.ProductApplication;
+import br.com.product.data.Product;
+import br.com.product.data.ProductConfiguration;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.mapping.DynamicIndexAndTypeContextHolder;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,12 +16,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by giovane.silva on 02/10/2017.
  */
 public class ElasticSearchInterceptor extends HandlerInterceptorAdapter implements Filter, Serializable {
+
+
+    @Autowired
+    private ElasticsearchTemplate elasticsearchTemplate;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -29,6 +39,8 @@ public class ElasticSearchInterceptor extends HandlerInterceptorAdapter implemen
         String organizationId = this.getRequestAttribute(request, DynamicIndexAndTypeContextHolder.ORGANIZATION_ID);
         String storeId = this.getRequestAttribute(request, DynamicIndexAndTypeContextHolder.STORE_ID);
         instance.setIndexAndType(organizationId, storeId);
+
+        this.createIndexIfNotCreatedForContext();
         return true;
     }
 
@@ -38,7 +50,7 @@ public class ElasticSearchInterceptor extends HandlerInterceptorAdapter implemen
             return map.get(key);
         }else {
             String parameter = request.getParameter(key);
-            if(Strings.isNotBlank(parameter)){
+            if(StringUtils.isNotBlank(parameter)){
                 return parameter;
             }
         }
@@ -70,4 +82,9 @@ public class ElasticSearchInterceptor extends HandlerInterceptorAdapter implemen
     public void destroy() {
 
     }
+
+    private void createIndexIfNotCreatedForContext() {
+//        ProductApplication.documents().forEach(it -> this.elasticsearchTemplate.createIndex(it));
+    }
+
 }

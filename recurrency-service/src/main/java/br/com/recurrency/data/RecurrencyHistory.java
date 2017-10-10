@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 /**
  * Created by giovane.silva on 03/10/2017.
@@ -15,7 +14,7 @@ public class RecurrencyHistory {
 
     @DBRef
     public Recurrency recurrency;
-    public Optional<GenericProcessException> errorOcurred;
+    public GenericProcessException errorOcurred;
     public LocalDateTime dateCreated;
 
 }

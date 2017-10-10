@@ -2,14 +2,13 @@ package br.com.product.data;
 
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.repository.support.DynamicIndex;
 import org.springframework.data.elasticsearch.repository.support.DynamicType;
 
 import javax.validation.constraints.NotNull;
-import java.util.OptionalDouble;
-import java.util.OptionalLong;
 
 /**
  * Created by giovane.silva on 26/09/2017.
@@ -24,11 +23,11 @@ import java.util.OptionalLong;
 public class ProductConfiguration{
 
     @Id
-    private Long id;
+    private String id;
     private String name;
-    @NotNull
-    private Product product;
-    private OptionalLong stock;
-    private OptionalDouble price;
+    @NotEmpty
+    private String productId;
+    private Long stock;
+    private Double price;
 
 }

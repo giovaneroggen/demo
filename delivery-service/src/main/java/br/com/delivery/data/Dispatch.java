@@ -6,11 +6,9 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by giovane.silva on 22/09/2017.
@@ -32,7 +30,7 @@ public abstract class Dispatch extends BaseStoreEntity{
     private String name;
     @NotNull
     private DispatchTypeEnum dispatchType;
-    private Optional<List<DispatchLimit>> dispatchLimit;
+    private List<DispatchLimit> dispatchLimit;
     @NotEmpty
     private List<DispatchAvailability> dispatchAvailabilityList;
 }

@@ -3,4 +3,5 @@ dependencies {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
     }
     compile(boot.undertow)
+    compileOnly(boot.data.rest)
 }

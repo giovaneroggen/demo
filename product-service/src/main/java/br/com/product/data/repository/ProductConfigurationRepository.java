@@ -8,6 +8,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * Created by giovane.silva on 15/09/2017.
  */
 @RepositoryRestResource(path = "/products/configuration")
-public interface ProductConfigurationRepository extends ElasticsearchRepository<ProductConfiguration, Long> {
+public interface ProductConfigurationRepository extends ElasticsearchRepository<ProductConfiguration, String> {
 
 }

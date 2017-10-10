@@ -1,6 +1,7 @@
 package br.com.product.data;
 
 import br.com.product.enummeration.ProductTypeEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
@@ -8,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.repository.support.DynamicIndex;
 
-import java.util.OptionalDouble;
+import java.util.Optional;
 
 /**
  * Created by giovane.silva on 15/09/2017.
@@ -29,13 +30,13 @@ import java.util.OptionalDouble;
 public abstract class Product{
 
     @Id
-    private Long id;
+    private String id;
     private ProductTypeEnum productType;
     private String name;
     private String description;
     private String imagePath;
     private String brand;
     private String provider;
-    private OptionalDouble defaultPrice;
+    private Double price;
 
 }

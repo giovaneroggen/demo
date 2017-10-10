@@ -7,8 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
 
 /**
  * Created by giovane.silva on 27/09/2017.
@@ -18,7 +16,6 @@ import java.util.OptionalDouble;
 public class Kit extends Product{
 
     @NotEmpty
-    @Field(type = FieldType.Nested)
-    private List<Product> productList;
+    private List<KitItem> kitItemList;
 
 }

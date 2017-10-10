@@ -1,5 +1,4 @@
 dependencies {
     compileOnly project(':runnable-commons')
     compileOnly(boot.cloud.feign)
-    compileOnly(boot.web)
 }
