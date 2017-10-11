@@ -1,23 +1,27 @@
 package br.com.product.data.repository;
 
-import br.com.product.data.ElasticSearchSpringApplicationTest;
 import br.com.product.data.Product;
 import br.com.product.data.ProductConfiguration;
 import br.com.product.data.Simple;
 import br.com.product.enummeration.ProductTypeEnum;
+import br.com.tests.SpringApplicationTests;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.mapping.DynamicIndexAndTypeContextHolder;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by giovane.silva on 03/10/2017.
  */
 
-public class ProductConfigurationRepositoryTest extends ElasticSearchSpringApplicationTest{
+public class ProductConfigurationRepositoryTest extends SpringApplicationTests {
 
+
+    @Autowired
+    protected ObjectMapper mapper;
 
     @Autowired
     private ProductConfigurationRepository productConfigurationRepository;

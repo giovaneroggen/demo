@@ -6,17 +6,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Created by giovane.silva on 27/09/2017.
  */
-@WebMvcTest
+@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public abstract class SpringApplicationTests{
-
-    @Autowired
-    protected ObjectMapper mapper;
 
 }

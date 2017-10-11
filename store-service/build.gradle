@@ -6,4 +6,5 @@ dependencies {
     compile boot.data.rest, boot.data.mongo
 
     testCompile project(':tests-commons')
+    testCompile tests.embedmongo.mongo
 }

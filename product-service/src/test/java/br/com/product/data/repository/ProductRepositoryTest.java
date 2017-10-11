@@ -1,10 +1,8 @@
 package br.com.product.data.repository;
 
-import br.com.product.data.ElasticSearchSpringApplicationTest;
 import br.com.product.data.Product;
 import br.com.product.data.Simple;
-import br.com.product.enummeration.ProductTypeEnum;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import br.com.tests.SpringApplicationTests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by giovane.silva on 05/10/2017.
  */
-public class ProductRepositoryTest extends ElasticSearchSpringApplicationTest{
+public class ProductRepositoryTest extends SpringApplicationTests {
 
 
     @Autowired
