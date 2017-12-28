@@ -3,6 +3,7 @@ package br.com.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -12,5 +13,11 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 public class BaseStoreId extends BaseOrganizationId implements Serializable {
 
+    @NotNull
     protected Long storeId;
+
+    public BaseStoreId(String organizationId, Long storeId) {
+        super(organizationId);
+        this.storeId = storeId;
+    }
 }

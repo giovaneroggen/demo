@@ -53,7 +53,8 @@ allprojects {
 			h2: "com.h2database:h2",
 			embedmongo: [
 					mongo: "de.flapdoodle.embed:de.flapdoodle.embed.mongo"
-			]
+			],
+			mockmvc: "org.springframework.restdocs:spring-restdocs-mockmvc"
 		]
 		jna = "net.java.dev.jna:jna"
 	}
